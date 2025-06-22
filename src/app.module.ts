@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { SessionsModule } from './sessions/sessions.module';
+import { FiltersModule } from './filters/filters.module';
+import { TempoModule } from './tempo/tempo.module';
 
 @Module({
-  imports: [SessionsModule],
+  imports: [FiltersModule, TempoModule],
   controllers: [],
   providers: [],
 })
