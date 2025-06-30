@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { FiltersService } from './filters.service';
-import { GetSessionsOrCategoriesByEventDto, GetEventsByYear, GetParticipantsByCategoryDto } from './filters.dto';
+import { GetSessionsOrCategoriesByEventDto, GetEventsByYearDto, GetParticipantsByCategoryDto } from './filters.dto';
 
 @Controller('filters')
 export class FiltersController {
@@ -12,7 +12,7 @@ export class FiltersController {
   }
 
   @Post('events')
-  getEventsByYear(@Body() getEventsByYear: GetEventsByYear) {
+  getEventsByYear(@Body() getEventsByYear: GetEventsByYearDto) {
     const { year } = getEventsByYear;
     return this.filtersService.getEventsByYear(year);
   }

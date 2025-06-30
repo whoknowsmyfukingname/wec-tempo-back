@@ -11,7 +11,7 @@ export class FiltersService {
     async getAllYears() {
         const { data, error } = await this.sEventsTable.select('YEAR');
         if (error) {
-            return [];
+            return error;
         }
         return [...new Set(data.map(yearObj => yearObj.YEAR))];
     }
@@ -19,7 +19,7 @@ export class FiltersService {
     async getEventsByYear(year: number) {
         const { data, error } = await this.sEventsTable.select('ID, EVENT_NAME').eq('YEAR', year);
         if (error) {
-            return [];
+            return error;
         }
         return [...new Set(data.map(eventObj => {
             return {
@@ -32,7 +32,7 @@ export class FiltersService {
     async getSessionsByEvent(year: number, eventId: string) {
         const { data, error } = await this.sEventsTable.select('SESSIONS').eq('YEAR', year).eq('ID', eventId);
         if (error) {
-            return [];
+            return error;
         }
         return [...new Set(data.map(sessionsObj => sessionsObj.SESSIONS))];
     }
@@ -40,7 +40,7 @@ export class FiltersService {
     async getCategoriesByEvent(year: number, eventId: string) {
         const { data, error } = await this.sEventsTable.select('CATEGORIES').eq('YEAR', year).eq('ID', eventId);
         if (error) {
-            return [];
+            return error;
         }
         return [...new Set(data.map(categoriesObj => categoriesObj.CATEGORIES))];
     }
@@ -48,7 +48,7 @@ export class FiltersService {
     async getParticipantsByCategory(year: number, eventId: string, category: string) {
         const { data, error } = await this.sEventsTable.select('PARTICIPANTS').eq('YEAR', year).eq('ID', eventId)
         if (error) {
-            return [];
+            return error;
         }
         return [...new Set(data.map(dataToFilter => dataToFilter.PARTICIPANTS[category]))];
     }

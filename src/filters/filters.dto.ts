@@ -1,7 +1,7 @@
 import { Min, MinLength } from "class-validator";
 
 
-export class GetEventsByYear {
+export class GetEventsByYearDto {
     @Min(2011)
     year: number;
 }
