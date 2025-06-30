@@ -6,8 +6,8 @@ export class TempoService {
 
     // TODO: handle errors
 
-    async getSessionTempo(event: string, session: string, participant: number) {
-        const { data, error } = await supabase.from(`${event}_${session}`).select('ELAPSED, LAP_TIME, LAP_NUMBER, S1, S2, S3, KPH, DRIVER_NAME, CROSSING_FINISH_LINE_IN_PIT, PIT_TIME').eq('NUMBER', participant);
+    async getSessionTempo(eventId: string, session: string, participant: number) {
+        const { data, error } = await supabase.from(`${eventId}_${session}`).select('ELAPSED, LAP_TIME, LAP_NUMBER, S1, S2, S3, KPH, DRIVER_NAME, CROSSING_FINISH_LINE_IN_PIT, PIT_TIME').eq('NUMBER', participant);
         if (error) {
             return error;
         }

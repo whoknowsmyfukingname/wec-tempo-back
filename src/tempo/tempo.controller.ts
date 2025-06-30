@@ -8,7 +8,7 @@ export class TempoController {
 
   @Post('data')
   getSessionTempo(@Body() getSessionTempoDto: GetSessionTempoDto) {
-    const { event, session, participant } = getSessionTempoDto;
-    return this.tempoService.getSessionTempo(event, session, participant);
+    const { eventId, session, participant } = getSessionTempoDto;
+    return this.tempoService.getSessionTempo(eventId, session, participant);
   }
 }
